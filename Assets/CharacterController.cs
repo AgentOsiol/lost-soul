@@ -5,9 +5,11 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public float maxSpeed;
-    public float normalSpeed = 3.0f;
-    public float sprintSpeed = 5.0f;
-    public float maxSprint = 5.0f;
+    public float normalSpeed = 5.0f;
+    public float sprintSpeed = 7.0f;
+    public float maxSprint = 8.0f;
+    public float crouchSpeed = 2.5f;
+
     
     
     float rotation = 0.0f;
@@ -44,10 +46,16 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             maxSpeed = sprintSpeed;
-        } else
+        } 
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
+            maxSpeed = crouchSpeed;
+        } 
+        else
         {
             maxSpeed = normalSpeed;
         }
+
 
         Vector3 newVelocity = (transform.forward * Input.GetAxis("Vertical") * maxSpeed) + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
 
