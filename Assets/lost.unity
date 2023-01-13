@@ -362,9 +362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acc8b71306fbaa4da1d7c13f72d3978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  normalSpeed: 10
-  springSpeed: 20
+  maxSpeed: 7
+  normalSpeed: 3
+  sprintSpeed: 5
+  maxSprint: 5
   jumpForce: 300
   groundChecker: {fileID: 243423091}
   groundLayer:
@@ -555,7 +556,7 @@ Transform:
   m_GameObject: {fileID: 2022200515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.9, z: -4.33}
-  m_LocalScale: {x: 19.523403, y: 5.9257, z: 16.681438}
+  m_LocalScale: {x: 53.43946, y: 5.9257, z: 62.50368}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

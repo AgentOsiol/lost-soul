@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public float maxSpeed = 5.0f;
-    public float normalSpeed = 10.0f;
-    public float springSpeed = 20.0f;
+    public float maxSpeed;
+    public float normalSpeed = 3.0f;
+    public float sprintSpeed = 5.0f;
+    public float maxSprint = 5.0f;
+    
     
     float rotation = 0.0f;
     float camRotation = 0.0f;
@@ -19,6 +21,8 @@ public class CharacterController : MonoBehaviour
     bool isOnGround;
     public GameObject groundChecker;
     public LayerMask groundLayer;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,14 @@ public class CharacterController : MonoBehaviour
         if (isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
             myRigidbody.AddForce(transform.up * jumpForce);
+        }
+        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            maxSpeed = sprintSpeed;
+        } else
+        {
+            maxSpeed = normalSpeed;
         }
 
         Vector3 newVelocity = (transform.forward * Input.GetAxis("Vertical") * maxSpeed) + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
