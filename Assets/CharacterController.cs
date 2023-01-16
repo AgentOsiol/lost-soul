@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    private float height;
+    public float height;
     public float maxSpeed;
     public float normalSpeed = 5.0f;
     public float sprintSpeed = 7.0f;
     public float maxSprint = 8.0f;
     public float crouchSpeed = 2.5f;
-    public float standingHeight = 1.8f;
-    public float crouchingHeight = 1.25f;
+    
 
 
     public CharacterController controller;
     
+
     float rotation = 0.0f;
     float camRotation = 0.0f;
     float rotationSpeed = 2.0f;
@@ -58,12 +58,12 @@ public class CharacterController : MonoBehaviour
         } 
         else if (Input.GetKey(KeyCode.LeftControl))
         {
-            controller.height = crouchingHeight;
+            
             maxSpeed = crouchSpeed;
         } 
         else
         {
-            controller.height = standing
+            
             maxSpeed = normalSpeed;
         }
         
