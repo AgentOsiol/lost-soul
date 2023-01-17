@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public float height;
     public float maxSpeed;
     public float normalSpeed = 5.0f;
     public float sprintSpeed = 7.0f;
