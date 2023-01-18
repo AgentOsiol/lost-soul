@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+    
     public float maxSpeed;
     public float normalSpeed = 5.0f;
     public float sprintSpeed = 7.0f;
@@ -11,9 +12,7 @@ public class CharacterController : MonoBehaviour
     public float crouchSpeed = 2.5f;
     
 
-
     public CharacterController controller;
-    
 
     float rotation = 0.0f;
     float camRotation = 0.0f;
@@ -22,6 +21,7 @@ public class CharacterController : MonoBehaviour
     public float jumpForce = 300.0f;
     GameObject cam;
     Rigidbody myRigidbody;
+    CapsuleCollider playerCollider;
 
     bool isOnGround;
     public GameObject groundChecker;
@@ -37,6 +37,7 @@ public class CharacterController : MonoBehaviour
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
+        playerCollider = GetComponent<CapsuleCollider>();
 
         
     }
@@ -53,16 +54,18 @@ public class CharacterController : MonoBehaviour
         
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            playerCollider.height = 2;
             maxSpeed = sprintSpeed;
         } 
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             
             maxSpeed = crouchSpeed;
+            playerCollider.height = 1;
         } 
         else
         {
-            
+            playerCollider.height = 2;
             maxSpeed = normalSpeed;
         }
         
