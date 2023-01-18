@@ -33,7 +33,7 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
@@ -79,5 +79,7 @@ public class CharacterController : MonoBehaviour
 
         camRotation = camRotation + Input.GetAxis("Mouse Y") * camRotationSpeed;
         cam.transform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0.0f, 0.0f));
+
+        camRotation = Mathf.Clamp(camRotation, -30.0f, 40.0f);
     }
 }
