@@ -27,6 +27,9 @@ public class CharacterController : MonoBehaviour
     public GameObject groundChecker;
     public LayerMask groundLayer;
 
+ 
+
+
 
 
 
@@ -82,4 +85,6 @@ public class CharacterController : MonoBehaviour
 
         camRotation = Mathf.Clamp(camRotation, -30.0f, 40.0f);
     }
+
+
 }

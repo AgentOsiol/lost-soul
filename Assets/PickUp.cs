@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public GameObject uiObject;
+    private void Start()
     {
-        
+        uiObject.SetActive(false);
+    }
+    private void OnTriggerEnter(Collider Player)
+    {
+        if (Player.gameObject.tag == "Player")
+        {
+            uiObject.SetActive(true);
+            StartCoroutine("WaitForSec");
+        }
 
         Destroy(gameObject);
     }
+    IEnumerator WaitForSec()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(uiObject);
+        Destroy(gameObject);
+    }
 }
+
