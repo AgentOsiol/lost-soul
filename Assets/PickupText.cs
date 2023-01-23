@@ -22,7 +22,7 @@ public class PickupText : MonoBehaviour
         
     }
 
-    private void OntriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "pickup 1")
         {
