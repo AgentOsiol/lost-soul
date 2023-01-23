@@ -7,9 +7,11 @@ public class PickupText : MonoBehaviour
 {
     public GameObject textBox;
     public Text itemText;
+    
 
     public string pickup1Text;
     public string pickup2Text;
+    private 
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,19 @@ public class PickupText : MonoBehaviour
             itemText.text = pickup1Text;
             
         }
-        if(other.tag =="pickup 2")
+        if (other.tag == "pickup 2")
         {
             textBox.SetActive(true);
             itemText.text = pickup2Text;
-
+            
         }
     }
+
+    IEnumerator WaitForSec()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(textBox);
+
+    }
+
 }
