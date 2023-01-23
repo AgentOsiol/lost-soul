@@ -29,11 +29,13 @@ public class PickupText : MonoBehaviour
         {
             textBox.SetActive(true);
             itemText.text = pickup1Text;
+            
         }
         if(other.tag =="pickup 2")
         {
             textBox.SetActive(true);
             itemText.text = pickup2Text;
+
         }
     }
 }
