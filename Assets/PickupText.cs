@@ -11,7 +11,8 @@ public class PickupText : MonoBehaviour
 
     public string pickup1Text;
     public string pickup2Text;
-    private 
+    public string pickup3Text;
+     
 
     // Start is called before the first frame update
     void Start()
@@ -31,21 +32,26 @@ public class PickupText : MonoBehaviour
         {
             textBox.SetActive(true);
             itemText.text = pickup1Text;
-            
+            StartCoroutine(WaitForSec());
         }
         if (other.tag == "pickup 2")
         {
             textBox.SetActive(true);
             itemText.text = pickup2Text;
-            
+            StartCoroutine(WaitForSec());
+        }
+        if (other.tag == "pickup 3")
+        {
+            textBox.SetActive(true);
+            itemText.text = pickup3Text;
+            StartCoroutine(WaitForSec());
         }
     }
 
     IEnumerator WaitForSec()
     {
-        yield return new WaitForSeconds(5);
-        Destroy(textBox);
-
+        yield return new WaitForSeconds(7);
+        textBox.SetActive(false);
     }
 
 }
