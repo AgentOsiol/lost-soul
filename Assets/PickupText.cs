@@ -12,7 +12,12 @@ public class PickupText : MonoBehaviour
     public string pickup1Text;
     public string pickup2Text;
     public string pickup3Text;
-     
+    public string pickup4Text;
+    public string pickup5Text;
+    public string pickup6Text;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +49,24 @@ public class PickupText : MonoBehaviour
         {
             textBox.SetActive(true);
             itemText.text = pickup3Text;
+            StartCoroutine(WaitForSec());
+        }
+        if (other.tag == "pickup 4")
+        {
+            textBox.SetActive(true);
+            itemText.text = pickup4Text;
+            StartCoroutine(WaitForSec());
+        }
+        if (other.tag == "pickup 5")
+        {
+            textBox.SetActive(true);
+            itemText.text = pickup5Text;
+            StartCoroutine(WaitForSec());
+        }
+        if (other.tag == "pickup 6")
+        {
+            textBox.SetActive(true);
+            itemText.text = pickup6Text;
             StartCoroutine(WaitForSec());
         }
     }

@@ -62,7 +62,6 @@ public class CharacterController : MonoBehaviour
         } 
         else if (Input.GetKey(KeyCode.LeftControl))
         {
-            
             maxSpeed = crouchSpeed;
             playerCollider.height = 1;
         } 
