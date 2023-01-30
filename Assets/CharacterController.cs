@@ -70,7 +70,6 @@ public class CharacterController : MonoBehaviour
             playerCollider.height = 2;
             maxSpeed = normalSpeed;
         }
-        
 
         Vector3 newVelocity = (transform.forward * Input.GetAxis("Vertical") * maxSpeed) + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
 
@@ -85,5 +84,12 @@ public class CharacterController : MonoBehaviour
         camRotation = Mathf.Clamp(camRotation, -30.0f, 40.0f);
     }
 
+    private void OnTriggerEnter(Collider Player)
+    {
+        if (Player.tag == "climb")
+        {
+            Rigidbody.AddForce()
+        }
+    }
 
 }
