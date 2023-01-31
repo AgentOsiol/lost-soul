@@ -88,7 +88,7 @@ public class CharacterController : MonoBehaviour
     {
         if (Player.tag == "climb")
         {
-            Rigidbody.AddForce()
+            Rigidbody.AddForce
         }
     }
 
