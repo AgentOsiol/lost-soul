@@ -27,7 +27,7 @@ public class CharacterController : MonoBehaviour
     public GameObject groundChecker;
     public LayerMask groundLayer;
 
-    bool climbMode = false;
+
     bool inClimbTrigger = false;
 
 
@@ -50,6 +50,17 @@ public class CharacterController : MonoBehaviour
         {
             myRigidbody.useGravity = false;
             myRigidbody.position += (Vector3.up * Time.deltaTime);
+            rotation = rotation + Input.GetAxis("Mouse X") * rotationSpeed;
+            transform.rotation = Quaternion.Euler(new Vector3(0.0f, rotation, 0.0f));
+
+            camRotation = camRotation + Input.GetAxis("Mouse Y") * camRotationSpeed;
+            cam.transform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0.0f, 0.0f));
+
+            camRotation = Mathf.Clamp(camRotation, -30.0f, 40.0f);
+
+            Vector3 newVelocity = (transform.forward * Input.GetAxis("Vertical") * maxSpeed) + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
+
+            myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z);
         } else
         {
             myRigidbody.useGravity = true;
@@ -96,7 +107,6 @@ public class CharacterController : MonoBehaviour
 
         if (other.tag == "climb")
         {
-
             inClimbTrigger = true;
         }
     }
