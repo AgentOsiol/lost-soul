@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class PickupText : MonoBehaviour
 {
     public GameObject textBox;
@@ -75,6 +75,13 @@ public class PickupText : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         textBox.SetActive(false);
+        StartCoroutine(EndGame());
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 }
