@@ -22,6 +22,7 @@ public class CharacterController : MonoBehaviour
     GameObject cam;
     Rigidbody myRigidbody;
     CapsuleCollider playerCollider;
+    Animator myAnim;
 
     bool isOnGround;
     public GameObject groundChecker;
@@ -31,9 +32,11 @@ public class CharacterController : MonoBehaviour
     bool inClimbTrigger = false;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
+        myAnim = GetComponentInChildren<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
@@ -66,9 +69,11 @@ public class CharacterController : MonoBehaviour
             myRigidbody.useGravity = true;
 
             isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
+            myAnim.SetBool("isOnGround", isOnGround);
 
             if (isOnGround && Input.GetKeyDown(KeyCode.Space))
             {
+                myAnim.SetTrigger("jumped");
                 myRigidbody.AddForce(transform.up * jumpForce);
             }
 
@@ -89,7 +94,7 @@ public class CharacterController : MonoBehaviour
             }
 
             Vector3 newVelocity = (transform.forward * Input.GetAxis("Vertical") * maxSpeed) + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
-
+            myAnim.SetFloat("speed", newVelocity.magnitude);
             myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z);
 
             rotation = rotation + Input.GetAxis("Mouse X") * rotationSpeed;
