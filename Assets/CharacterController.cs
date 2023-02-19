@@ -24,13 +24,13 @@ public class CharacterController : MonoBehaviour
     CapsuleCollider playerCollider;
     Animator myAnim;
 
+    bool isCrouching;
     bool isOnGround;
     public GameObject groundChecker;
     public LayerMask groundLayer;
-
-
+    
+    
     bool inClimbTrigger = false;
-
 
 
     // Start is called before the first frame update
@@ -51,6 +51,7 @@ public class CharacterController : MonoBehaviour
     {
         if ((inClimbTrigger == true) && Input.GetKey(KeyCode.W))
         {
+            myAnim.SetBool("climb", inClimbTrigger);
             myRigidbody.useGravity = false;
             myRigidbody.position += (Vector3.up * Time.deltaTime);
             rotation = rotation + Input.GetAxis("Mouse X") * rotationSpeed;
@@ -66,6 +67,7 @@ public class CharacterController : MonoBehaviour
             myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z);
         } else
         {
+            myAnim.SetBool("climb", inClimbTrigger = false);
             myRigidbody.useGravity = true;
 
             isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
@@ -84,11 +86,15 @@ public class CharacterController : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.LeftControl))
             {
+                isCrouching = true;
+                myAnim.SetBool("crouch", isCrouching = true);
                 maxSpeed = crouchSpeed;
                 playerCollider.height = 1;
             }
             else
             {
+                isCrouching = false;
+                myAnim.SetBool("crouch", isCrouching = false);
                 playerCollider.height = 2;
                 maxSpeed = normalSpeed;
             }
