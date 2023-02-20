@@ -67,7 +67,7 @@ public class PickupText : MonoBehaviour
         {
             textBox.SetActive(true);
             itemText.text = pickup6Text;
-            StartCoroutine(WaitForSec());
+            StartCoroutine(EndGame());
         }
     }
 
@@ -75,7 +75,7 @@ public class PickupText : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         textBox.SetActive(false);
-        StartCoroutine(EndGame());
+        
     }
 
     IEnumerator EndGame()
